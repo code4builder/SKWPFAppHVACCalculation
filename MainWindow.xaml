@@ -9,9 +9,11 @@
         Title="MainWindow" Height="450" Width="900">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
-            <ColumnDefinition Width="300"/>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -19,9 +21,18 @@
             <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <materialDesign:Card Background="{DynamicResource PrimaryHueLightBrush}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Width="100" Height="50"
+  Padding="8">
+            <TextBlock
+    FontSize="16" Text="Rectangular Duct" VerticalAlignment="Center" />
+        </materialDesign:Card>
+        <TextBox x:Name="rectDuctWidth" materialDesign:HintAssist.Hint="Width" Grid.Row="0" Grid.Column="1" Margin="20 20 20 20" Style="{StaticResource MaterialDesignFilledTextBox}"
+    VerticalAlignment="Center" AcceptsReturn="True" TextWrapping="Wrap" MaxWidth="100"/>
+        <TextBox x:Name="rectDuctHeight" materialDesign:HintAssist.Hint="Height" Grid.Row="0" Grid.Column="2" Margin="20 20 20 20" Style="{StaticResource MaterialDesignFilledTextBox}"
+    VerticalAlignment="Center" AcceptsReturn="True" TextWrapping="Wrap" MaxWidth="100"/>
+        <TextBox x:Name="rectDuctAirFlow" materialDesign:HintAssist.Hint="Air Flow" Grid.Row="0" Grid.Column="3" Margin="20 20 20 20" Style="{StaticResource MaterialDesignFilledTextBox}"
+    VerticalAlignment="Center" AcceptsReturn="True" TextWrapping="Wrap" MaxWidth="100"/>
 
-            <TextBox Grid.Row="0" Grid.Column="1" Margin="20 20 20 20" Style="{StaticResource MaterialDesignFilledTextBox}"
-    VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" MaxWidth="200" materialDesign:HintAssist.Hint="Air Flow"/>
 
     </Grid>
 </Window>
