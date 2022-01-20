@@ -1,0 +1,27 @@
+﻿<Window x:Class="SKUWPFAppHVAC.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:SKUWPFAppHVAC"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="900">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="20 20 20 20" Style="{StaticResource MaterialDesignFilledTextBox}"
+    VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" MaxWidth="200" materialDesign:HintAssist.Hint="Air Flow"/>
+
+    </Grid>
+</Window>
