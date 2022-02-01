@@ -6,33 +6,62 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:SKUWPFAppHVAC"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="900">
+        Title="HVAC Calculations Small App" Height="450" Width="1200" Icon="/HVAC_icon.png">
+    <StackPanel>
+        <Menu>
+            <MenuItem Header="File" Width="80" Height="15" FontSize="12" BorderThickness="1" BorderBrush="Gray">
+                <MenuItem Header="About" Width="80" Height="15" Click="MIAbout_Click"/>
+            </MenuItem>
+            <MenuItem Header="Info" Width="80" Height="15" FontSize="12" BorderThickness="1" BorderBrush="Gray">
+                <MenuItem Header="Formulas" Width="Auto" Height="15"/>
+            </MenuItem>
+        </Menu>   
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="150"/>
-        </Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <materialDesign:Card Background="{DynamicResource PrimaryHueLightBrush}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Width="100" Height="50"
+        <materialDesign:Card Background="{DynamicResource PrimaryHueLightBrush}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Width="180" Height="50"
   Padding="8">
-            <TextBlock
-    FontSize="16" Text="Rectangular Duct" VerticalAlignment="Center" />
+            <WrapPanel>
+                <TextBlock FontSize="16" Text="Rectangular Duct " VerticalAlignment="Center" />
+                <Image Source="Data\Content\Images\imageRectDuct.JPG"/>
+            </WrapPanel>
+
         </materialDesign:Card>
-        <TextBox x:Name="rectDuctWidth" materialDesign:HintAssist.Hint="Width" Grid.Row="0" Grid.Column="1" Margin="20 20 20 20" Style="{StaticResource MaterialDesignFilledTextBox}"
-    VerticalAlignment="Center" AcceptsReturn="True" TextWrapping="Wrap" MaxWidth="100"/>
-        <TextBox x:Name="rectDuctHeight" materialDesign:HintAssist.Hint="Height" Grid.Row="0" Grid.Column="2" Margin="20 20 20 20" Style="{StaticResource MaterialDesignFilledTextBox}"
-    VerticalAlignment="Center" AcceptsReturn="True" TextWrapping="Wrap" MaxWidth="100"/>
-        <TextBox x:Name="rectDuctAirFlow" materialDesign:HintAssist.Hint="Air Flow" Grid.Row="0" Grid.Column="3" Margin="20 20 20 20" Style="{StaticResource MaterialDesignFilledTextBox}"
-    VerticalAlignment="Center" AcceptsReturn="True" TextWrapping="Wrap" MaxWidth="100"/>
-
-
+            <TextBox x:Name="boxRectDuctWidth" Grid.Row="0" Grid.Column="1" Text="" materialDesign:HintAssist.Hint="Width, mm" Margin="5 0" Style="{StaticResource MaterialDesignFilledTextBox}"
+    VerticalAlignment="Center" AcceptsReturn="False" TextWrapping="NoWrap" MaxWidth="100" TextChanged="BoxRectDuctWidth_TextChanged" ToolTip="Insert width of duct"/>
+            <TextBox x:Name="boxRectDuctHeight" materialDesign:HintAssist.Hint="Height, mm" Grid.Row="0" Grid.Column="2" Margin="20 20 20 20" Style="{StaticResource MaterialDesignFilledTextBox}"
+    VerticalAlignment="Center" AcceptsReturn="False" TextWrapping="NoWrap" MaxWidth="100" TextChanged="BoxRectDuctHeight_TextChanged" ToolTip="Insert height of duct"/>
+        <TextBox x:Name="boxRectDuctAirFlow" materialDesign:HintAssist.Hint="Air Flow, m3/h" Grid.Row="0" Grid.Column="3" Margin="20 20 20 20" Style="{StaticResource MaterialDesignFilledTextBox}"
+    VerticalAlignment="Center" AcceptsReturn="False" TextWrapping="NoWrap" MaxWidth="100" TextChanged="BoxRectDuctAirFlow_TextChanged" ToolTip="Insert airflow in your duct"/>
+        <TextBox x:Name="boxRectDuctAirFlowLS" materialDesign:HintAssist.Hint="Air Flow, l/s" Grid.Row="0" Grid.Column="4" Margin="20 20 20 20" Style="{StaticResource MaterialDesignFilledTextBox}"
+    VerticalAlignment="Center" AcceptsReturn="False" TextWrapping="NoWrap" MaxWidth="100" ToolTip="Insert airflow in your duct"/>
+        <TextBox x:Name="boxRectVelocity" materialDesign:HintAssist.Hint="Velocity, m/s" Grid.Row="0" Grid.Column="6" Margin="20 20 20 20" Style="{StaticResource MaterialDesignFilledTextBox}"
+    VerticalAlignment="Center" AcceptsReturn="False" TextWrapping="NoWrap" MaxWidth="100" Background="BlanchedAlmond"/>
     </Grid>
+        <Expander>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <ComboBox Grid.Column="1" Grid.Row="0" Height="40" Width="80" Margin="8 0"  Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Width">
+                    <ComboBoxItem Content="100" IsSelected="True"/>
+                    <ComboBoxItem Content="150"/>
+                    <ComboBoxItem Content="200"/>
+                </ComboBox>
+            </Grid>
+
+        </Expander>
+    </StackPanel>
 </Window>
