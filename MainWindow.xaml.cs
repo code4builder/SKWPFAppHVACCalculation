@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SKUWPFAppHVAC.Pages;
+using SKUWPFAppHVAC.Data;
 
 namespace SKUWPFAppHVAC
 {
@@ -20,77 +22,33 @@ namespace SKUWPFAppHVAC
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Air AirPage;
+        public Water WaterPage;
+
         public MainWindow()
         {
             InitializeComponent();
-
-        }
-        int rectDuctWidth, rectDuctHeight, rectDuctAirFlow;
-        double rectDuctVelocity, rectDuctAirFlowLS;
-
-        void CalculateRectDuctVelocity()
-        {
-            double equivalentDiameterRectDuct = 1.3 * (Math.Pow((rectDuctWidth * rectDuctHeight), 0.625) / Math.Pow((rectDuctWidth + rectDuctHeight), 0.25));
-            double sectionAreaEquivDiam = 3.14 * Math.Pow((equivalentDiameterRectDuct / 1000), 2) / 4;
-            rectDuctVelocity = Math.Round((rectDuctAirFlow / (sectionAreaEquivDiam * 3600)), 2);
-            rectDuctAirFlowLS = Math.Round((rectDuctAirFlow / 3.6),2);
-
-            boxRectDuctAirFlowLS.Text = rectDuctAirFlowLS.ToString();
-            boxRectVelocity.Text = rectDuctVelocity.ToString();
+            AirPage = new Air();
+            WaterPage = new Water();
+            MainWindowFrame.Content = AirPage;
         }
 
         private void MIAbout_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("This application was created by Sergey Kulkeshov/n Email:");
+            MessageBox.Show("This application was created by Sergey Kuleshov Email:");
         }
 
-        private void BoxRectDuctWidth_TextChanged(object sender, TextChangedEventArgs e)
+        private void AirButton_Click(object sender, RoutedEventArgs e)
         {
-            if (boxRectDuctWidth != null && boxRectDuctHeight != null && boxRectDuctAirFlow != null && boxRectVelocity != null && boxRectDuctAirFlowLS != null)
-            {
-            try
-            {
-                rectDuctWidth = Int32.Parse(boxRectDuctWidth.Text.Trim());
-
-            }
-            catch (Exception myException) { MessageBox.Show("You can type only numbers: " + myException.Message); }
-
-                CalculateRectDuctVelocity();
-            }
+            MainWindowFrame.Content = AirPage;
         }
-        private void BoxRectDuctHeight_TextChanged(object sender, TextChangedEventArgs e)
+
+        private void WaterButton_Click(object sender, RoutedEventArgs e)
         {
-            if (boxRectDuctWidth != null && boxRectDuctHeight != null && boxRectDuctAirFlow != null && boxRectVelocity != null && boxRectDuctAirFlowLS != null)
-            {
-                try
-                {
-                    rectDuctHeight = Int32.Parse(boxRectDuctHeight.Text.Trim());
-                }
-                catch (Exception myException) { MessageBox.Show("You can type only numbers: " + myException.Message); }
-
-                CalculateRectDuctVelocity();
-            }
-        }
-        private void BoxRectDuctAirFlow_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (boxRectDuctWidth != null && boxRectDuctHeight != null && boxRectDuctAirFlow != null && boxRectVelocity != null && boxRectDuctAirFlowLS != null)
-            {
-                try
-                {
-
-                    rectDuctAirFlow = Int32.Parse(boxRectDuctAirFlow.Text.Trim());
-                }
-                catch (Exception myException) { MessageBox.Show("You can type only numbers: " + myException.Message); }
-
-                CalculateRectDuctVelocity();
-            }
+            MainWindowFrame.Content = WaterPage;
         }
 
-
-
-
-
-
+        
 
     }
 }

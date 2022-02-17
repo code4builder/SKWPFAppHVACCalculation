@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SKUWPFAppHVAC.Pages
 {
     /// <summary>
-    /// Interaction logic for PageWater.xaml
+    /// Interaction logic for Water.xaml
     /// </summary>
-    public partial class PageWater : Page
+    public partial class Water : Page
     {
-        public PageWater()
+        public Water()
         {
             InitializeComponent();
         }
