@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SKUWPFAppHVAC.Data.Content.ListsData
 {
@@ -16,6 +12,5 @@ namespace SKUWPFAppHVAC.Data.Content.ListsData
             RectDucts = new List<RectDuctsSize>();
             RectDuctSingleSize = size;
         }
-
     }
 }

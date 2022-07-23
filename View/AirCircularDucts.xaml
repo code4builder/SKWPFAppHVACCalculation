@@ -1,0 +1,124 @@
+﻿<Page x:Class="SKUWPFAppHVAC.View.AirCircularDucts"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:SKUWPFAppHVAC.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1100"
+      Title="AirCircularDucts">
+    <StackPanel>
+        <Grid Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <materialDesign:Card Background="{DynamicResource PrimaryHueLightBrush}" 
+                                 Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 
+                                 Width="180" 
+                                 Height="50"
+  Padding="8">
+                <WrapPanel>
+                    <TextBlock FontSize="16" 
+                               Text="Circular Duct       " 
+                               VerticalAlignment="Center"/>
+                    <Image Source="pack://application:,,,/Data/Content/Images/imageCircDuct.JPG"/>
+                </WrapPanel>
+
+            </materialDesign:Card>
+
+            <StackPanel Grid.Row="0" 
+                        Grid.Column="1" 
+                        Orientation="Vertical" 
+                        VerticalAlignment="Center" 
+                        Width="130">
+                <TextBlock>Diameter:</TextBlock>
+                <ComboBox x:Name="CircDuctDiameter_Combobox" 
+                          SelectionChanged="CircDuctDiameter_Combobox_SelectionChanged" 
+                          ItemsSource="{Binding CircDuctsSizesList}"                           
+                          SelectedItem="{Binding SelectedCircDuctSize}"
+                          Grid.Row="0" 
+                          Grid.Column="1" 
+                          Height="30">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding CircDuctSingleSize}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" 
+                        Grid.Column="3"
+                        VerticalAlignment="Center">
+                <RadioButton x:Name="RadioButtonMeters3PerHour"
+                             GroupName="RadioButtonAirFlowCircDucts"
+                             Content="m3/h"
+                             IsChecked="True"
+                             Margin="5"/>
+                <RadioButton x:Name="RadioButtonLitersPerSecond"
+                            GroupName="RadioButtonAirFlowCircDucts"
+                            Content="l/s"
+                            IsChecked="False"
+                            Checked="RadioButtonLitersPerSecond_Checked"
+                            Unchecked="RadioButtonLitersPerSecond_Unchecked"
+                            Margin="5"/>                
+            </StackPanel>
+
+            <TextBox x:Name="boxCircDuctAirFlow_Combo" 
+                     materialDesign:HintAssist.Hint="Air Flow, m3/h" 
+                     Grid.Row="0" 
+                     Grid.Column="4" 
+                     Margin="20 20 20 20" 
+                     VerticalAlignment="Center" 
+                     AcceptsReturn="False" 
+                     TextWrapping="NoWrap"                     
+                     Width="120" 
+                     Text ="{Binding SelectedAirflow}"
+                     TextChanged="BoxCircDuctAirFlowCombo_TextChanged" 
+                     ToolTip="Insert airflow in your duct"
+                     Style="{StaticResource MaterialDesignFilledTextBox}"/>
+            <TextBox x:Name="boxCircDuctAirFlowLS_Combo" 
+                     materialDesign:HintAssist.Hint="Air Flow, l/s" 
+                     Grid.Row="0" 
+                     Grid.Column="5" 
+                     Margin="20 20 20 20" 
+                     TextChanged="BoxCircDuctAirFlowLS_Combo_TextChanged" 
+                     VerticalAlignment="Center" 
+                     AcceptsReturn="False" 
+                     TextWrapping="NoWrap" 
+                     MaxWidth="120" 
+                     ToolTip="Insert airflow (l/s) in your duct"
+                     IsEnabled="False"
+                     Style="{StaticResource MaterialDesignFilledTextBox}"/>
+            <TextBox x:Name="boxCircDuctVelocity_Combo" 
+                     materialDesign:HintAssist.Hint="Velocity, m/s" 
+                     Grid.Row="0" 
+                     Grid.Column="6" 
+                     Margin="20 20 20 20" 
+                     VerticalAlignment="Center" 
+                     AcceptsReturn="False" 
+                     TextWrapping="NoWrap" 
+                     Width="120" 
+                     Background="BlanchedAlmond"
+                     Style="{StaticResource MaterialDesignFilledTextBox}"/>
+        </Grid>
+
+        <Expander Header="Manual Input Data" 
+                  Grid.Column="2" 
+                  Grid.Row="2" 
+                  HorizontalAlignment="Stretch" >
+            <Grid Background="White">
+                
+            </Grid>
+        </Expander>
+    </StackPanel>
+</Page>

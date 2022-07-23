@@ -1,0 +1,165 @@
+﻿<Page x:Class="SKUWPFAppHVAC.View.AirRectangularDucts"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:SKUWPFAppHVAC.View"
+      xmlns:converter="clr-namespace:SKUWPFAppHVAC.Data"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1150"
+      Title="AirRectangularDucts">
+    <Page.Resources>
+        <converter:Converter x:Key="rangeConverter"/>
+        <Style TargetType="TextBox" x:Key="commonTBox" 
+               BasedOn="{StaticResource MaterialDesignFilledTextBox}">
+            <Setter Property="Margin" Value="20,20,20,20"/>
+            <Setter Property="TextWrapping" Value="NoWrap"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>                        
+            <Setter Property="AcceptsReturn" Value="False"/>
+            <Setter Property="MaxWidth" Value="120"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=Value, Converter={StaticResource rangeConverter}}" Value="0">
+                    <Setter Property="Background" Value="BlanchedAlmond" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=Value, Converter={StaticResource rangeConverter}}" Value="1">
+                    <Setter Property="Background" Value="Red" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    <StackPanel>
+        <Grid Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <materialDesign:Card Background="{DynamicResource PrimaryHueLightBrush}" 
+                                 Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 
+                                 Width="220" 
+                                 Height="50"
+                                 Padding="8">
+                <WrapPanel  
+                            Grid.Row="0" 
+                            Grid.Column="0" >
+                    <TextBlock FontSize="16" Width="110"
+                               Text="Rectangular" 
+                               VerticalAlignment="Center" />
+                    <Image Source="pack://application:,,,/Data/Content/Images/imageRectDuct.JPG"/>
+                </WrapPanel>
+
+            </materialDesign:Card>
+
+            <StackPanel Grid.Row="0" 
+                        Grid.Column="1" 
+                        Orientation="Vertical" 
+                        VerticalAlignment="Center" 
+                        Width="130">
+                <TextBlock>Width:</TextBlock>
+                <ComboBox x:Name="RectDuctWidth_Combobox" 
+                          ItemsSource="{Binding RectDuctsSizesList}"
+                          SelectedItem="{Binding SelectedRectDuctWidth}"
+                          Grid.Row="0" 
+                          Grid.Column="1" 
+                          Height="30">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding RectDuctSingleSize}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBox x:Name="BoxRectDuctWidth" 
+                         Text="{Binding SelectedRectDuctWidthFromTextBox}"
+                         Grid.Row="0" 
+                         Grid.Column="1" 
+                         Visibility="Collapsed"
+                         materialDesign:HintAssist.Hint="Width, mm"                    
+                         ToolTip="Insert width of duct"
+                         Style="{StaticResource commonTBox}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" 
+                        Grid.Column="2" 
+                        Orientation="Vertical" 
+                        VerticalAlignment="Center" 
+                        Width="130">
+                <TextBlock>Height:</TextBlock>
+                <ComboBox x:Name="RectDuctHeight_Combobox" 
+                          ItemsSource="{Binding RectDuctsSizesList}" 
+                          SelectedItem="{Binding SelectedRectDuctHeight}"
+                          Grid.Column="1" 
+                          Height="30">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding RectDuctSingleSize}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBox x:Name="BoxRectDuctHeight" 
+                         Text="{Binding SelectedRectDuctHeightFromTextBox}"
+                         Visibility="Collapsed"
+                         materialDesign:HintAssist.Hint="Height, mm" 
+                         Grid.Row="0" 
+                         Grid.Column="2"                         
+                         ToolTip="Insert height of duct"
+                         Style="{StaticResource commonTBox}"/>
+
+            </StackPanel>
+            <StackPanel Orientation="Vertical" 
+                        Grid.Column="3"
+                        VerticalAlignment="Center">
+                <RadioButton x:Name="RadioButtonRectMeters3PerHourCombo"
+                             GroupName="RadioButtonAirFlowRectDuctsCombo"
+                             Content="m3/h"
+                             IsChecked="{Binding FlowInM3HRadioButton}"
+                             Margin="5"/>
+                <RadioButton x:Name="RadioButtonRectLitersPerSecondCombo"
+                             GroupName="RadioButtonAirFlowRectDuctsCombo"
+                             Content="l/s"
+                             Checked="RadioButtonRectLitersPerSecond_Checked"
+                             Unchecked="RadioButtonRectLitersPerSecond_Unchecked"
+                             Margin="5"/>
+            </StackPanel>
+            <TextBox x:Name="boxRectDuctAirFlow_Combo" 
+                     Text="{Binding SelectedAirflow}"
+                     materialDesign:HintAssist.Hint="Air Flow, m3/h"                       
+                     Grid.Column="4"
+                     ToolTip="Insert airflow in your duct"
+                     Style="{StaticResource commonTBox}"/>
+            <TextBox x:Name="boxRectDuctAirFlowLS_Combo" 
+                     materialDesign:HintAssist.Hint="Air Flow, l/s"                     
+                     Text="{Binding SelectedAirFlowLS}"
+                     Grid.Column="5" 
+                     IsEnabled="False"
+                     ToolTip="Insert airflow (l/s) in your duct"
+                     Style="{StaticResource commonTBox}"/>
+            <Button x:Name="CalculateBtn"
+                    Content="Calculate"
+                    Grid.Column="6"
+                    Command="{Binding Path=ShowResultVM}"/>
+            <TextBox x:Name="boxRectVelocity_Combo"
+                     Text="{Binding Velocity}"
+                     materialDesign:HintAssist.Hint="Velocity, m/s"                     
+                     Grid.Column="7"
+                     Background="BlanchedAlmond"
+                     Style="{StaticResource commonTBox}"/>
+
+        </Grid>
+
+        <CheckBox x:Name="RectDuctsManualInputCheckBox"
+                  Content="Manual Input"
+                  IsChecked="{Binding RectDuctsManualInputChecked}"
+                  Checked="RectDuctsManualInputCheckBox_Checked"
+                  Unchecked="RectDuctsManualInputCheckBox_Unchecked"/>
+
+
+    </StackPanel>
+</Page>

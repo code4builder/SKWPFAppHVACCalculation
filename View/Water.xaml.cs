@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SKUWPFAppHVAC.Pages
+namespace SKUWPFAppHVAC.View
 {
     /// <summary>
     /// Interaction logic for Water.xaml
