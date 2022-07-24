@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace SKUWPFAppHVAC.Data
+namespace SKUWPFAppHVAC.Model
 {
     public class RelayCommand : ICommand
     {

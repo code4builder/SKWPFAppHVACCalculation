@@ -80,7 +80,6 @@
     <Compile Include="Model\Calculations\CalculationDucts.cs" />
     <Compile Include="Model\CircDuctsSize.cs" />
     <Compile Include="Model\RectDuctsSize.cs" />
-    <Compile Include="Model\Converter.cs" />
     <Compile Include="View\AirPage.xaml.cs">
       <DependentUpon>AirPage.xaml</DependentUpon>
     </Compile>

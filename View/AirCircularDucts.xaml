@@ -8,6 +8,16 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="1150"
       x:Name="AirCircularDuctsUC">
+    <UserControl.Resources>
+        <Style TargetType="TextBox" x:Key="commonTBox" 
+               BasedOn="{StaticResource MaterialDesignFilledTextBox}">
+            <Setter Property="Margin" Value="20,20,20,20"/>
+            <Setter Property="TextWrapping" Value="NoWrap"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="AcceptsReturn" Value="False"/>
+            <Setter Property="MaxWidth" Value="120"/>
+        </Style>
+    </UserControl.Resources>
     <StackPanel>
         <Grid Background="White">
             <Grid.ColumnDefinitions>
@@ -88,27 +98,17 @@
                      materialDesign:HintAssist.Hint="Air Flow, m3/h" 
                      Grid.Row="0" 
                      Grid.Column="4" 
-                     Margin="20 20 20 20" 
-                     VerticalAlignment="Center" 
-                     AcceptsReturn="False" 
-                     TextWrapping="NoWrap"                     
-                     Width="120" 
+                     Style="{StaticResource commonTBox}"
                      Text ="{Binding SelectedCircDuctAirflow}"
-                     ToolTip="Insert airflow in your duct"
-                     Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                     ToolTip="Insert airflow in your duct"/>
             <TextBox x:Name="boxCircDuctAirFlowLS_Combo" 
                      materialDesign:HintAssist.Hint="Air Flow, l/s" 
                      Grid.Row="0" 
                      Grid.Column="5" 
-                     Margin="20 20 20 20" 
-                     VerticalAlignment="Center" 
-                     AcceptsReturn="False" 
-                     TextWrapping="NoWrap" 
-                     MaxWidth="120" 
                      ToolTip="Insert airflow (l/s) in your duct"
                      IsEnabled="False"
-                     Text ="{Binding SelectedCircDuctAirFlowLS}"
-                     Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                     Style="{StaticResource commonTBox}"
+                     Text ="{Binding SelectedCircDuctAirFlowLS}"/>
             <Button x:Name="CalculateCircDuctBtn"
                     Content="Calculate"
                     Grid.Column="6"
@@ -117,14 +117,9 @@
                      materialDesign:HintAssist.Hint="Velocity, m/s" 
                      Text="{Binding CircDuctVelocity}"
                      Grid.Row="0" 
-                     Grid.Column="7" 
-                     Margin="20 20 20 20" 
-                     VerticalAlignment="Center" 
-                     AcceptsReturn="False" 
-                     TextWrapping="NoWrap" 
-                     Width="120" 
-                     Background="BlanchedAlmond"
-                     Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                     Grid.Column="7"
+                     Background="{Binding TextBoxColor}"
+                     Style="{StaticResource commonTBox}"/>
             <CheckBox x:Name="CircDuctsManualInputCheckBox"
                   Content="Manual Input"
                   Grid.Row="1"
@@ -133,7 +128,5 @@
                   Checked="CircDuctsManualInputCheckBox_Checked"
                   Unchecked="CircDuctsManualInputCheckBox_Unchecked"/>
         </Grid>
-
-
     </StackPanel>
 </UserControl>

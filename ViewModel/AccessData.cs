@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using SKUWPFAppHVAC.Model;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Media;
 
 namespace SKUWPFAppHVAC.Data
 {
@@ -274,6 +276,7 @@ namespace SKUWPFAppHVAC.Data
                             _selectedRectDuctHeightFromTextBox,
                             SelectedRectDuctAirflow,
                             _useEquivalentDiameterChecked);
+                        TextBoxColor = SetTextBoxColorByValue(RectDuctVelocity);
                     }
                     else
                     {
@@ -282,6 +285,7 @@ namespace SKUWPFAppHVAC.Data
                             SelectedRectDuctHeight.RectDuctSingleSize,
                             SelectedRectDuctAirflow,
                             _useEquivalentDiameterChecked);
+                        TextBoxColor = SetTextBoxColorByValue(RectDuctVelocity);
                     }
                 }
                 ));
@@ -295,44 +299,72 @@ namespace SKUWPFAppHVAC.Data
             {
                 return showResultCircDuctVM ?? (showResultCircDuctVM = new RelayCommand(obj =>
                 {
-                    if (CircDuctsManualInputChecked)
+                    if (FlowInM3HCircDuctRadioButton)
                     {
-                        if (FlowInM3HCircDuctRadioButton)
-                        {
-                            SelectedCircDuctAirFlowLS = CalculationDucts.CalculateDuctAirflowLS(SelectedCircDuctAirflow);
-
-                            CircDuctVelocity = CalculationDucts.CalculateCircDuctVelocity(
-                                _selectedCircDuctDiameterFromTextBox,
-                                SelectedCircDuctAirflow);
-                        }
-                        else
-                        {
-                            SelectedCircDuctAirflow = CalculationDucts.CalculateDuctAirflow(SelectedCircDuctAirFlowLS);
-                            CircDuctVelocity = CalculationDucts.CalculateCircDuctVelocity(
-                                _selectedCircDuctDiameterFromTextBox,
-                                SelectedCircDuctAirflow);
-                        }
+                        SelectedCircDuctAirFlowLS = CalculationDucts.CalculateDuctAirflowLS(SelectedCircDuctAirflow);
                     }
                     else
                     {
-                        if (FlowInM3HCircDuctRadioButton)
-                        {
-                            SelectedCircDuctAirFlowLS = CalculationDucts.CalculateDuctAirflowLS(SelectedCircDuctAirflow);
+                        SelectedCircDuctAirflow = CalculationDucts.CalculateDuctAirflow(SelectedCircDuctAirFlowLS);
+                    }
 
-                            CircDuctVelocity = CalculationDucts.CalculateCircDuctVelocity(
-                                SelectedCircDuctSize.CircDuctSingleSize,
-                                SelectedCircDuctAirflow);
-                        }
-                        else
-                        {
-                            SelectedCircDuctAirflow = CalculationDucts.CalculateDuctAirflow(SelectedCircDuctAirFlowLS);
-                            CircDuctVelocity = CalculationDucts.CalculateCircDuctVelocity(
-                                SelectedCircDuctSize.CircDuctSingleSize,
-                                SelectedCircDuctAirflow);
-                        }
+                    if (CircDuctsManualInputChecked)
+                    {
+                        CircDuctVelocity = CalculationDucts.CalculateCircDuctVelocity(
+                            _selectedCircDuctDiameterFromTextBox,
+                            SelectedCircDuctAirflow);
+                        TextBoxColor = SetTextBoxColorByValue(CircDuctVelocity);
+                    }
+                    else
+                    {
+                        CircDuctVelocity = CalculationDucts.CalculateCircDuctVelocity(
+                            SelectedCircDuctSize.CircDuctSingleSize,
+                            SelectedCircDuctAirflow);
+                        TextBoxColor = SetTextBoxColorByValue(CircDuctVelocity);
+
                     }
                 }
                 ));
+            }
+        }
+        #endregion
+
+        #region SET TEXTBOX COLOR BY VELOCITY VALUE 
+
+        private SolidColorBrush _textBoxColor;
+
+        public SolidColorBrush TextBoxColor
+        {
+            get { return _textBoxColor; }
+            set
+            {
+                _textBoxColor = value;
+                NotifyPropertyChanged(nameof(TextBoxColor));
+            }
+        }
+
+
+        private SolidColorBrush SetTextBoxColorByValue(double velocity)
+        {
+            if (velocity == 0)
+            {
+                return new SolidColorBrush(Colors.BlanchedAlmond);
+            }
+            else if (velocity > 0 && velocity <= 5)
+            {
+                return new SolidColorBrush(Colors.LightGreen);
+            }
+            else if (velocity > 5 && velocity <= 7)
+            {
+                return new SolidColorBrush(Colors.LightSalmon);
+            }
+            else if (velocity > 7)
+            {
+                return new SolidColorBrush(Colors.OrangeRed);
+            }
+            else
+            {
+                return new SolidColorBrush(Colors.BlanchedAlmond);
             }
         }
         #endregion
