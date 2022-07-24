@@ -8,20 +8,18 @@ namespace SKUWPFAppHVAC
     /// </summary>
     public partial class MainWindow : Window
     {
-        public AirRectangularDucts AirRectangularDuctsPage;
-        public Water WaterPage;
-        public AirCircularDucts AirCircularDuctsPage;
+        public AirPage AirPage;
+        public WaterPage WaterPage;
         public UserGuideDucts UserGuideDuctsPage;
 
         public MainWindow()
         {
             InitializeComponent();
-            AirRectangularDuctsPage = new AirRectangularDucts();
-            WaterPage = new Water();
-            AirCircularDuctsPage = new AirCircularDucts();
+            WaterPage = new WaterPage();
+            AirPage = new AirPage();
             UserGuideDuctsPage = new UserGuideDucts();
-            MainWindowFrame1.Content = AirRectangularDuctsPage;
-            MainWindowFrame2.Content = AirCircularDuctsPage;
+            MainWindowFrame1.Content = AirPage;
+            
         }
 
         private void MIAbout_Click(object sender, RoutedEventArgs e)
@@ -32,23 +30,17 @@ namespace SKUWPFAppHVAC
 
         private void AirButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindowFrame1.Content = AirRectangularDuctsPage;
-            MainWindowFrame2.Content = AirCircularDuctsPage;
-            MainGrid.RowDefinitions[1].Height = new GridLength(250);
+            MainWindowFrame1.Content = AirPage;
         }
 
         private void WaterButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindowFrame1.Content = WaterPage;
-            MainWindowFrame2.Content = null;
-            MainGrid.RowDefinitions[1].Height = new GridLength(250);
         }
 
         private void MenuItemUserGuideDucts_Click(object sender, RoutedEventArgs e)
         {
             MainWindowFrame1.Content = UserGuideDuctsPage;
-            MainGrid.RowDefinitions[1].Height = new GridLength(1000);
-            MainWindowFrame2.Content = null;
         }
 
 

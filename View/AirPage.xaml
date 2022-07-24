@@ -1,0 +1,24 @@
+﻿<Page x:Class="SKUWPFAppHVAC.View.AirPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SKUWPFAppHVAC.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AirPage">
+
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="300"/>
+        </Grid.RowDefinitions>
+
+        <Frame x:Name="AirPageFrame1" 
+                   Grid.Row="0"
+                   NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="AirPageFrame2" 
+                   Grid.Row="1" 
+                   NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Page>

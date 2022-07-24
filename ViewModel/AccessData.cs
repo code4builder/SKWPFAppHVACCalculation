@@ -1,9 +1,6 @@
-﻿using SKUWPFAppHVAC.Data.Calculations;
-using SKUWPFAppHVAC.Data.Content.ListsData;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Windows;
 
 namespace SKUWPFAppHVAC.Data
 {
@@ -12,7 +9,6 @@ namespace SKUWPFAppHVAC.Data
         #region RECTANGULAR DUCTS PROPERTIES
 
         private RectDuctsSize _selectedRectDuctWidth;
-
         public RectDuctsSize SelectedRectDuctWidth
         {
             get => _selectedRectDuctWidth;
@@ -24,7 +20,6 @@ namespace SKUWPFAppHVAC.Data
         }
 
         private RectDuctsSize _selectedRectDuctHeight;
-
         public RectDuctsSize SelectedRectDuctHeight
         {
             get => _selectedRectDuctHeight;
@@ -36,7 +31,6 @@ namespace SKUWPFAppHVAC.Data
         }
 
         private int _selectedRectDuctWidthFromTextBox;
-
         public int SelectedRectDuctWidthFromTextBox
         {
             get => _selectedRectDuctWidthFromTextBox;
@@ -48,7 +42,6 @@ namespace SKUWPFAppHVAC.Data
         }
 
         private int _selectedRectDuctHeightFromTextBox;
-
         public int SelectedRectDuctHeightFromTextBox
         {
             get => _selectedRectDuctHeightFromTextBox;
@@ -59,69 +52,51 @@ namespace SKUWPFAppHVAC.Data
             }
         }
 
-        private CircDuctsSize _selectedCircDuctSize;
-
-        public CircDuctsSize SelectedCircDuctSize
+        private int _selectedRectDuctAirflow;
+        public int SelectedRectDuctAirflow
         {
-            get => _selectedCircDuctSize;
+            get => _selectedRectDuctAirflow;
             set
             {
-                _selectedCircDuctSize = value;
-                NotifyPropertyChanged(nameof(SelectedCircDuctSize));
+                _selectedRectDuctAirflow = value;
+                NotifyPropertyChanged(nameof(SelectedRectDuctAirflow));
             }
         }
 
-        private int _selectedAirflow;
-
-        public int SelectedAirflow
+        private double _selectedRectDuctAirFlowLS;
+        public double SelectedRectDuctAirFlowLS
         {
-            get => _selectedAirflow;
+            get => _selectedRectDuctAirFlowLS;
             set
             {
-                _selectedAirflow = value;
-                NotifyPropertyChanged(nameof(SelectedAirflow));
+                _selectedRectDuctAirFlowLS = value;
+                NotifyPropertyChanged(nameof(SelectedRectDuctAirFlowLS));
             }
         }
 
-        private double _selectedAirFlowLS;
-
-        public double SelectedAirFlowLS
+        private double _rectDuctVelocity;
+        public double RectDuctVelocity
         {
-            get => _selectedAirFlowLS;
+            get => _rectDuctVelocity;
             set
             {
-                _selectedAirFlowLS = value;
-                NotifyPropertyChanged(nameof(SelectedAirFlowLS));
+                _rectDuctVelocity = value;
+                NotifyPropertyChanged(nameof(RectDuctVelocity));
             }
         }
 
-        private double _velocity;
-
-        public double Velocity
+        private bool _flowInM3HRectDuctRadioButton = true;
+        public bool FlowInM3HRectDuctRadioButton
         {
-            get => _velocity;
+            get => _flowInM3HRectDuctRadioButton;
             set
             {
-                _velocity = value;
-                NotifyPropertyChanged(nameof(Velocity));
+                _flowInM3HRectDuctRadioButton = value;
+                NotifyPropertyChanged(nameof(FlowInM3HRectDuctRadioButton));
             }
         }
-
-        private bool _flowInM3HRadioButton = true;
-
-        public bool FlowInM3HRadioButton
-        {
-            get => _flowInM3HRadioButton;
-            set
-            {
-                _flowInM3HRadioButton = value;
-                NotifyPropertyChanged(nameof(FlowInM3HRadioButton));
-            }
-        }
-        #endregion
 
         private bool _rectDuctsManualInputChecked = false;
-
         public bool RectDuctsManualInputChecked
         {
             get => _rectDuctsManualInputChecked;
@@ -132,7 +107,100 @@ namespace SKUWPFAppHVAC.Data
             }
         }
 
+        private bool _useEquivalentDiameterChecked = false;
+        public bool UseEquivalentDiameterChecked
+        {
+            get => _useEquivalentDiameterChecked;
+            set
+            {
+                _useEquivalentDiameterChecked = value;
+                NotifyPropertyChanged(nameof(UseEquivalentDiameterChecked));
+            }
+        }
+        #endregion
 
+        #region CIRCULAR DUCTS PROPERTIES
+
+        private CircDuctsSize _selectedCircDuctSize;
+        public CircDuctsSize SelectedCircDuctSize
+        {
+            get => _selectedCircDuctSize;
+            set
+            {
+                _selectedCircDuctSize = value;
+                NotifyPropertyChanged(nameof(SelectedCircDuctSize));
+            }
+        }
+
+        private int _selectedCircDuctDiameterFromTextBox;
+        public int SelectedCircDuctDiameterFromTextBox
+        {
+            get => _selectedCircDuctDiameterFromTextBox;
+            set
+            {
+                _selectedCircDuctDiameterFromTextBox = value;
+                NotifyPropertyChanged(nameof(SelectedCircDuctDiameterFromTextBox));
+            }
+        }
+
+        private int _selectedCircDuctAirflow;
+        public int SelectedCircDuctAirflow
+        {
+            get => _selectedCircDuctAirflow;
+            set
+            {
+                _selectedCircDuctAirflow = value;
+                NotifyPropertyChanged(nameof(SelectedCircDuctAirflow));
+            }
+        }
+
+        private double _selectedCircDuctAirFlowLS;
+        public double SelectedCircDuctAirFlowLS
+        {
+            get => _selectedCircDuctAirFlowLS;
+            set
+            {
+                _selectedCircDuctAirFlowLS = value;
+                NotifyPropertyChanged(nameof(SelectedCircDuctAirFlowLS));
+            }
+        }
+
+        private double _circDuctVelocity;
+        public double CircDuctVelocity
+        {
+            get => _circDuctVelocity;
+            set
+            {
+                _circDuctVelocity = value;
+                NotifyPropertyChanged(nameof(CircDuctVelocity));
+            }
+        }
+
+        private bool _flowInM3HCircDuctRadioButton = true;
+        public bool FlowInM3HCircDuctRadioButton
+        {
+            get => _flowInM3HCircDuctRadioButton;
+            set
+            {
+                _flowInM3HCircDuctRadioButton = value;
+                NotifyPropertyChanged(nameof(FlowInM3HCircDuctRadioButton));
+            }
+        }
+
+        private bool _circDuctsManualInputChecked = false;
+        public bool CircDuctsManualInputChecked
+        {
+            get => _circDuctsManualInputChecked;
+            set
+            {
+                _circDuctsManualInputChecked = value;
+                NotifyPropertyChanged(nameof(CircDuctsManualInputChecked));
+            }
+        }
+
+        #endregion
+
+        #region CONSTRUCTOR, DUCT LISTS AND NOTIFIER
         public AccessData()
         {
             //Creating of Size List for Rectangular Ducts
@@ -179,62 +247,94 @@ namespace SKUWPFAppHVAC.Data
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+        #endregion
 
-        private RelayCommand showResultVM;
-        public RelayCommand ShowResultVM
+        #region RELAY COMMANDS
+
+        private RelayCommand showResultRectDuctVM;
+        public RelayCommand ShowResultRectDuctVM
         {
             get
             {
-                return showResultVM ?? (showResultVM = new RelayCommand(obj =>
+                return showResultRectDuctVM ?? (showResultRectDuctVM = new RelayCommand(obj =>
                 {
-                    if (RectDuctsManualInputChecked)
+                    if (FlowInM3HRectDuctRadioButton)
                     {
-                        //SelectedRectDuctWidth.RectDuctSingleSize = _selectedRectDuctWidthFromTextBox;
-                        //SelectedRectDuctHeight.RectDuctSingleSize = _selectedRectDuctHeightFromTextBox;
-
-                        if (FlowInM3HRadioButton)
-                        {
-                            SelectedAirFlowLS = CalculationDucts.CalculateDuctAirflowLS(SelectedAirflow);
-
-                            Velocity = CalculationDucts.CalculateRectDuctVelocity(
-                                _selectedRectDuctWidthFromTextBox,
-                                _selectedRectDuctHeightFromTextBox,
-                                SelectedAirflow);
-                        }
-                        else
-                        {
-                            SelectedAirflow = CalculationDucts.CalculateDuctAirflow(SelectedAirFlowLS);
-                            Velocity = CalculationDucts.CalculateRectDuctVelocity(
-                                _selectedRectDuctWidthFromTextBox,
-                                _selectedRectDuctHeightFromTextBox,
-                                SelectedAirflow);
-                        }
+                        SelectedRectDuctAirFlowLS = CalculationDucts.CalculateDuctAirflowLS(SelectedRectDuctAirflow);
                     }
                     else
                     {
-                        if (FlowInM3HRadioButton)
-                        {
-                            SelectedAirFlowLS = CalculationDucts.CalculateDuctAirflowLS(SelectedAirflow);
+                        SelectedRectDuctAirflow = CalculationDucts.CalculateDuctAirflow(SelectedRectDuctAirFlowLS);
+                    }
 
-                            Velocity = CalculationDucts.CalculateRectDuctVelocity(
-                                SelectedRectDuctWidth.RectDuctSingleSize,
-                                SelectedRectDuctHeight.RectDuctSingleSize,
-                                SelectedAirflow);
-                        }
-                        else
-                        {
-                            SelectedAirflow = CalculationDucts.CalculateDuctAirflow(SelectedAirFlowLS);
-                            Velocity = CalculationDucts.CalculateRectDuctVelocity(
-                                SelectedRectDuctWidth.RectDuctSingleSize,
-                                SelectedRectDuctHeight.RectDuctSingleSize,
-                                SelectedAirflow);
-                        }
+                    if (RectDuctsManualInputChecked)
+                    {
+                        RectDuctVelocity = CalculationDucts.CalculateRectDuctVelocity(
+                            _selectedRectDuctWidthFromTextBox,
+                            _selectedRectDuctHeightFromTextBox,
+                            SelectedRectDuctAirflow,
+                            _useEquivalentDiameterChecked);
+                    }
+                    else
+                    {
+                        RectDuctVelocity = CalculationDucts.CalculateRectDuctVelocity(
+                            SelectedRectDuctWidth.RectDuctSingleSize,
+                            SelectedRectDuctHeight.RectDuctSingleSize,
+                            SelectedRectDuctAirflow,
+                            _useEquivalentDiameterChecked);
                     }
                 }
                 ));
             }
         }
 
+        private RelayCommand showResultCircDuctVM;
+        public RelayCommand ShowResultCircDuctVM
+        {
+            get
+            {
+                return showResultCircDuctVM ?? (showResultCircDuctVM = new RelayCommand(obj =>
+                {
+                    if (CircDuctsManualInputChecked)
+                    {
+                        if (FlowInM3HCircDuctRadioButton)
+                        {
+                            SelectedCircDuctAirFlowLS = CalculationDucts.CalculateDuctAirflowLS(SelectedCircDuctAirflow);
 
+                            CircDuctVelocity = CalculationDucts.CalculateCircDuctVelocity(
+                                _selectedCircDuctDiameterFromTextBox,
+                                SelectedCircDuctAirflow);
+                        }
+                        else
+                        {
+                            SelectedCircDuctAirflow = CalculationDucts.CalculateDuctAirflow(SelectedCircDuctAirFlowLS);
+                            CircDuctVelocity = CalculationDucts.CalculateCircDuctVelocity(
+                                _selectedCircDuctDiameterFromTextBox,
+                                SelectedCircDuctAirflow);
+                        }
+                    }
+                    else
+                    {
+                        if (FlowInM3HCircDuctRadioButton)
+                        {
+                            SelectedCircDuctAirFlowLS = CalculationDucts.CalculateDuctAirflowLS(SelectedCircDuctAirflow);
+
+                            CircDuctVelocity = CalculationDucts.CalculateCircDuctVelocity(
+                                SelectedCircDuctSize.CircDuctSingleSize,
+                                SelectedCircDuctAirflow);
+                        }
+                        else
+                        {
+                            SelectedCircDuctAirflow = CalculationDucts.CalculateDuctAirflow(SelectedCircDuctAirFlowLS);
+                            CircDuctVelocity = CalculationDucts.CalculateCircDuctVelocity(
+                                SelectedCircDuctSize.CircDuctSingleSize,
+                                SelectedCircDuctAirflow);
+                        }
+                    }
+                }
+                ));
+            }
+        }
+        #endregion
     }
 }

@@ -35,8 +35,8 @@
         <Grid x:Name="MainGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="250"/>
-                <RowDefinition Height="300"/>
+                <RowDefinition Height="*"/>
+
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" 
                         Orientation="Horizontal" 
@@ -60,10 +60,7 @@
             <Frame x:Name="MainWindowFrame1" 
                    Grid.Row="1" 
                    NavigationUIVisibility="Hidden"/>
-            <Frame x:Name="MainWindowFrame2" 
-                   Grid.Row="2" 
-                   NavigationUIVisibility="Hidden"
-                   />
+
         </Grid>
     </StackPanel>
 </Window>

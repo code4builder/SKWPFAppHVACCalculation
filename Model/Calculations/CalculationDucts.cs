@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SKUWPFAppHVAC.Data.Calculations
+namespace SKUWPFAppHVAC
 {
     public class CalculationDucts
     {
@@ -16,11 +12,20 @@ namespace SKUWPFAppHVAC.Data.Calculations
         }
 
         //Calculation Rectangular Duct Velocity
-        public static double CalculateRectDuctVelocity(int rectDuctWidthCalc, int rectDuctHeightCalc, double rectDuctAirFlowCalc)
+        public static double CalculateRectDuctVelocity(int rectDuctWidthCalc, int rectDuctHeightCalc, double rectDuctAirFlowCalc, bool useEquivalentDiameter)
         {
-            double equivalentDiameterRectDuct = 1.3 * (Math.Pow((rectDuctWidthCalc * rectDuctHeightCalc), 0.625) / Math.Pow((rectDuctWidthCalc + rectDuctHeightCalc), 0.25));
-            double sectionAreaEquivDiam = 3.14 * Math.Pow((equivalentDiameterRectDuct / 1000), 2) / 4;
-            return Math.Round((rectDuctAirFlowCalc / (sectionAreaEquivDiam * 3600)), 2);
+            if (useEquivalentDiameter == false)
+            {
+                double area = ((double)rectDuctWidthCalc / 1000) * ((double)rectDuctHeightCalc / 1000);
+                double velocity = rectDuctAirFlowCalc / (3600 * area);
+                return Math.Round(velocity, 2);
+            }
+            else
+            {
+                double equivalentDiameterRectDuct = 1.3 * (Math.Pow((rectDuctWidthCalc * rectDuctHeightCalc), 0.625) / Math.Pow((rectDuctWidthCalc + rectDuctHeightCalc), 0.25));
+                double sectionAreaEquivDiam = 3.14 * Math.Pow((equivalentDiameterRectDuct / 1000), 2) / 4;
+                return Math.Round((rectDuctAirFlowCalc / (sectionAreaEquivDiam * 3600)), 2);
+            }
         }
 
         //Calculation Duct Airflow Liter Per Second

@@ -64,6 +64,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\RelayCommand.cs" />
+    <Page Include="View\AirPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,9 +78,12 @@
     </Compile>
     <Compile Include="ViewModel\AccessData.cs" />
     <Compile Include="Model\Calculations\CalculationDucts.cs" />
-    <Compile Include="Model\Content\ListsData\CircDuctsSize.cs" />
-    <Compile Include="Model\Content\ListsData\RectDuctsSize.cs" />
+    <Compile Include="Model\CircDuctsSize.cs" />
+    <Compile Include="Model\RectDuctsSize.cs" />
     <Compile Include="Model\Converter.cs" />
+    <Compile Include="View\AirPage.xaml.cs">
+      <DependentUpon>AirPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -93,7 +100,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Water.xaml">
+    <Page Include="View\WaterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -108,8 +115,8 @@
     <Compile Include="View\UserGuideDucts.xaml.cs">
       <DependentUpon>UserGuideDucts.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Water.xaml.cs">
-      <DependentUpon>Water.xaml</DependentUpon>
+    <Compile Include="View\WaterPage.xaml.cs">
+      <DependentUpon>WaterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -138,16 +145,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Model\Content\Images\HVAC_icon.png" />
+    <EmbeddedResource Include="Resources\HVAC_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Model\Content\Images\imageRectDuct.JPG" />
+    <EmbeddedResource Include="Resources\imageRectDuct.JPG" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="HVAC_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Model\Content\Images\imageCircDuct.JPG" />
+    <EmbeddedResource Include="Resources\imageCircDuct.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\imageCircDuct.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\imageRectDuct.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets')" />

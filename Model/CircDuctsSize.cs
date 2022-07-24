@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SKUWPFAppHVAC.Data.Content.ListsData
+namespace SKUWPFAppHVAC
 {
     public class CircDuctsSize
     {

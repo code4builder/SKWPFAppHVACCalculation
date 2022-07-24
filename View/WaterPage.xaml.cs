@@ -18,9 +18,9 @@ namespace SKUWPFAppHVAC.View
     /// <summary>
     /// Interaction logic for Water.xaml
     /// </summary>
-    public partial class Water : Page
+    public partial class WaterPage : Page
     {
-        public Water()
+        public WaterPage()
         {
             InitializeComponent();
         }
