@@ -1,10 +1,13 @@
 ﻿using SKUWPFAppHVAC.Model;
+using SKUWPFAppHVAC.Model.Calculations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Media;
 
-namespace SKUWPFAppHVAC.Data
+namespace SKUWPFAppHVAC.ViewModel
 {
     internal class AccessData : INotifyPropertyChanged
     {
@@ -202,6 +205,175 @@ namespace SKUWPFAppHVAC.Data
 
         #endregion
 
+        #region PIPE WATER FLOW PROPERTIES
+
+        private double _selectedPower;
+        public double SelectedPower
+        {
+            get => _selectedPower;
+            set
+            {
+                _selectedPower = value;
+                NotifyPropertyChanged(nameof(SelectedPower));
+            }
+        }
+
+        private double _selectedTemperatureSupply;
+        public double SelectedTemperatureSupply
+        {
+            get => _selectedTemperatureSupply;
+            set
+            {
+                _selectedTemperatureSupply = value;
+                NotifyPropertyChanged(nameof(SelectedTemperatureSupply));
+            }
+        }
+
+        private double _selectedTemperatureReturn;
+        public double SelectedTemperatureReturn
+        {
+            get => _selectedTemperatureReturn;
+            set
+            {
+                _selectedTemperatureReturn = value;
+                NotifyPropertyChanged(nameof(SelectedTemperatureReturn));
+            }
+        }
+
+        private bool _pipePowerInputCheckBox = true;
+        public bool PipePowerInputCheckBox
+        {
+            get => _pipePowerInputCheckBox;
+            set
+            {
+                _pipePowerInputCheckBox = value;
+                NotifyPropertyChanged(nameof(PipePowerInputCheckBox));
+            }
+        }
+
+        private int _selectedPipeSize;
+        public int SelectedPipeSize
+        {
+            get => _selectedPipeSize;
+            set
+            {
+                _selectedPipeSize = value;
+                NotifyPropertyChanged(nameof(SelectedPipeSize));
+            }
+        }
+
+        private double _selectedPipeSizeFromTextBox;
+        public double SelectedPipeSizeFromTextBox
+        {
+            get => _selectedPipeSizeFromTextBox;
+            set
+            {
+                _selectedPipeSizeFromTextBox = value;
+                NotifyPropertyChanged(nameof(SelectedPipeSizeFromTextBox));
+            }
+        }
+
+        private bool _pipeDiameterManualInputChecked = false;
+        public bool PipeDiameterManualInputChecked
+        {
+            get => _pipeDiameterManualInputChecked;
+            set
+            {
+                _pipeDiameterManualInputChecked = value;
+                NotifyPropertyChanged(nameof(PipeDiameterManualInputChecked));
+            }
+        }
+
+        private bool _flowInM3HPipeRadioButton = true;
+        public bool FlowInM3HPipeRadioButton
+        {
+            get => _flowInM3HPipeRadioButton;
+            set
+            {
+                _flowInM3HPipeRadioButton = value;
+                NotifyPropertyChanged(nameof(FlowInM3HPipeRadioButton));
+            }
+        }
+
+        private bool _flowInKgHPipeRadioButton = false;
+        public bool FlowInKgHPipeRadioButton
+        {
+            get => _flowInKgHPipeRadioButton;
+            set
+            {
+                _flowInKgHPipeRadioButton = value;
+                NotifyPropertyChanged(nameof(FlowInKgHPipeRadioButton));
+            }
+        }
+
+        private bool _flowInLSPipeRadioButton = false;
+        public bool FlowInLSPipeRadioButton
+        {
+            get => _flowInLSPipeRadioButton;
+            set
+            {
+                _flowInLSPipeRadioButton = value;
+                NotifyPropertyChanged(nameof(FlowInLSPipeRadioButton));
+            }
+        }
+
+        private double _selectedFlowM3H;
+        public double SelectedFlowM3H
+        {
+            get => _selectedFlowM3H;
+            set
+            {
+                _selectedFlowM3H = value;
+                NotifyPropertyChanged(nameof(SelectedFlowM3H));
+            }
+        }
+
+        private double _selectedFlowKgH;
+        public double SelectedFlowKgH
+        {
+            get => _selectedFlowKgH;
+            set
+            {
+                _selectedFlowKgH = value;
+                NotifyPropertyChanged(nameof(SelectedFlowKgH));
+            }
+        }
+
+        private double _selectedFlowLS;
+        public double SelectedFlowLS
+        {
+            get => _selectedFlowLS;
+            set
+            {
+                _selectedFlowLS = value;
+                NotifyPropertyChanged(nameof(SelectedFlowLS));
+            }
+        }
+
+        private double _flowVelocity;
+        public double FlowVelocity
+        {
+            get => _flowVelocity;
+            set
+            {
+                _flowVelocity = value;
+                NotifyPropertyChanged(nameof(FlowVelocity));
+            }
+        }
+
+        private string _commentFlowVelocity;
+        public string CommentFlowVelocity
+        {
+            get => _commentFlowVelocity;
+            set
+            {
+                _commentFlowVelocity = value;
+                NotifyPropertyChanged(nameof(CommentFlowVelocity));
+            }
+        }
+
+        #endregion
+
         #region CONSTRUCTOR, DUCT LISTS AND NOTIFIER
         public AccessData()
         {
@@ -232,13 +404,21 @@ namespace SKUWPFAppHVAC.Data
                 new CircDuctsSize(900),
                 new CircDuctsSize(1000)
             };
+            PipeSizeList = new List<int>()
+            {
+                15, 20, 25, 32, 40, 50, 65, 80, 100, 125, 150, 200, 250, 300, 350, 400, 450, 500
+            };
+
             SelectedRectDuctWidth = RectDuctsSizesList.First();
             SelectedRectDuctHeight = RectDuctsSizesList.First();
             SelectedCircDuctSize = CircDuctsSizesList.First();
+            SelectedPipeSize = PipeSizeList.First();
         }
 
         public List<RectDuctsSize> RectDuctsSizesList { get; }
         public List<CircDuctsSize> CircDuctsSizesList { get; }
+
+        public List<int> PipeSizeList { get; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -276,7 +456,7 @@ namespace SKUWPFAppHVAC.Data
                             _selectedRectDuctHeightFromTextBox,
                             SelectedRectDuctAirflow,
                             _useEquivalentDiameterChecked);
-                        TextBoxColor = SetTextBoxColorByValue(RectDuctVelocity);
+                        TextBoxColor = SetTextBoxColorByValue(RectDuctVelocity, 5, 7);
                     }
                     else
                     {
@@ -285,7 +465,7 @@ namespace SKUWPFAppHVAC.Data
                             SelectedRectDuctHeight.RectDuctSingleSize,
                             SelectedRectDuctAirflow,
                             _useEquivalentDiameterChecked);
-                        TextBoxColor = SetTextBoxColorByValue(RectDuctVelocity);
+                        TextBoxColor = SetTextBoxColorByValue(RectDuctVelocity, 5, 7);
                     }
                 }
                 ));
@@ -313,15 +493,76 @@ namespace SKUWPFAppHVAC.Data
                         CircDuctVelocity = CalculationDucts.CalculateCircDuctVelocity(
                             _selectedCircDuctDiameterFromTextBox,
                             SelectedCircDuctAirflow);
-                        TextBoxColor = SetTextBoxColorByValue(CircDuctVelocity);
+                        TextBoxColor = SetTextBoxColorByValue(CircDuctVelocity, 5, 7);
                     }
                     else
                     {
                         CircDuctVelocity = CalculationDucts.CalculateCircDuctVelocity(
                             SelectedCircDuctSize.CircDuctSingleSize,
                             SelectedCircDuctAirflow);
-                        TextBoxColor = SetTextBoxColorByValue(CircDuctVelocity);
+                        TextBoxColor = SetTextBoxColorByValue(CircDuctVelocity, 5, 7);
+                    }
+                }
+                ));
+            }
+        }
 
+        private RelayCommand showResultWaterFlowVM;
+        public RelayCommand ShowResultWaterFlowVM
+        {
+            get
+            {
+                return showResultWaterFlowVM ?? (showResultWaterFlowVM = new RelayCommand(obj =>
+                {
+                    if (PipePowerInputCheckBox)
+                    {
+                        SelectedFlowM3H = CalculationPipes.CalculateFlowFromByPower(SelectedPower, SelectedTemperatureSupply, SelectedTemperatureReturn).Item1;
+                        SelectedFlowKgH = CalculationPipes.CalculateFlowFromByPower(SelectedPower, SelectedTemperatureSupply, SelectedTemperatureReturn).Item2;
+                        SelectedFlowLS = CalculationPipes.CalculateFlowFromByPower(SelectedPower, SelectedTemperatureSupply, SelectedTemperatureReturn).Item3;
+
+                        if (PipeDiameterManualInputChecked)
+                        {
+                            FlowVelocity = CalculationPipes.CalculateWaterVelocity(SelectedPipeSizeFromTextBox, SelectedFlowM3H);
+                            TextBoxColor = SetTextBoxColorByValue(FlowVelocity, 1, 1.5);
+                        }
+                        else
+                        {
+                            FlowVelocity = CalculationPipes.CalculateWaterVelocity(SelectedPipeSize, SelectedFlowM3H);
+                            TextBoxColor = SetTextBoxColorByValue(FlowVelocity, 1, 1.5);
+                        }
+
+                        CommentFlowVelocity = CalculationPipes.CheckVelocityValue(FlowVelocity);
+                    }
+                    else
+                    {
+                        if (FlowInM3HPipeRadioButton)
+                        {
+                            SelectedFlowKgH = CalculationPipes.CalculateFlowByKnownM3H(SelectedFlowM3H).Item1;
+                            SelectedFlowLS = CalculationPipes.CalculateFlowByKnownM3H(SelectedFlowM3H).Item2;
+                        }
+                        else if (FlowInKgHPipeRadioButton)
+                        {
+                            SelectedFlowM3H = CalculationPipes.CalculateFlowByKnownKgH(SelectedFlowKgH).Item1;
+                            SelectedFlowLS = CalculationPipes.CalculateFlowByKnownKgH(SelectedFlowKgH).Item2;
+                        }
+                        else
+                        {
+                            SelectedFlowM3H = CalculationPipes.CalculateFlowByKnownLS(SelectedFlowLS).Item1;
+                            SelectedFlowKgH = CalculationPipes.CalculateFlowByKnownLS(SelectedFlowLS).Item2;
+                        }
+
+                        if (PipeDiameterManualInputChecked)
+                        {
+                            FlowVelocity = CalculationPipes.CalculateWaterVelocity(SelectedPipeSizeFromTextBox, SelectedFlowM3H);
+                            TextBoxColor = SetTextBoxColorByValue(FlowVelocity, 1, 1.5);
+                            CommentFlowVelocity = CalculationPipes.CheckVelocityValue(FlowVelocity);
+                        }
+                        else
+                        {
+                            FlowVelocity = CalculationPipes.CalculateWaterVelocity(SelectedPipeSize, SelectedFlowM3H);
+                            TextBoxColor = SetTextBoxColorByValue(FlowVelocity, 1, 1.5);
+                            CommentFlowVelocity = CalculationPipes.CheckVelocityValue(FlowVelocity);
+                        }
                     }
                 }
                 ));
@@ -344,21 +585,21 @@ namespace SKUWPFAppHVAC.Data
         }
 
 
-        private SolidColorBrush SetTextBoxColorByValue(double velocity)
+        private SolidColorBrush SetTextBoxColorByValue(double velocity, double lowVelocity, double normalVelocity)
         {
             if (velocity == 0)
             {
                 return new SolidColorBrush(Colors.BlanchedAlmond);
             }
-            else if (velocity > 0 && velocity <= 5)
+            else if (velocity <= lowVelocity)
             {
                 return new SolidColorBrush(Colors.LightGreen);
             }
-            else if (velocity > 5 && velocity <= 7)
+            else if (velocity > lowVelocity && velocity <= normalVelocity)
             {
                 return new SolidColorBrush(Colors.LightSalmon);
             }
-            else if (velocity > 7)
+            else if (velocity > normalVelocity)
             {
                 return new SolidColorBrush(Colors.OrangeRed);
             }

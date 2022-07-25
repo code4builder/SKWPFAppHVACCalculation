@@ -1,4 +1,4 @@
-﻿using SKUWPFAppHVAC.Data;
+﻿using SKUWPFAppHVAC.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,7 +16,6 @@ namespace SKUWPFAppHVAC.View
             InitializeComponent();
             _dataContext = new AccessData();
             DataContext = _dataContext;
-
         }
 
         private void RadioButtonRectLitersPerSecond_Checked(object sender, RoutedEventArgs e)

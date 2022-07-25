@@ -20,9 +20,13 @@ namespace SKUWPFAppHVAC.View
     /// </summary>
     public partial class WaterPage : Page
     {
+        public WaterFlowPipe waterFlowPipe;
         public WaterPage()
         {
             InitializeComponent();
+            waterFlowPipe = new WaterFlowPipe();
+            WaterPageFrame1.Content = waterFlowPipe;
+            WaterPageFrame2.Content = null;
         }
     }
 }

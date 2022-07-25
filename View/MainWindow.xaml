@@ -55,6 +55,7 @@
                         Click="WaterButton_Click"
                         ToolTip="Resource name: MaterialDesignRaisedButton" 
                         Style="{StaticResource MaterialDesignRaisedButton}"
+                        Background="OrangeRed"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
             </StackPanel>
             <Frame x:Name="MainWindowFrame1" 
