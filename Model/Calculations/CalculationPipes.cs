@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SKUWPFAppHVAC.Model.Calculations
 {
@@ -36,7 +33,7 @@ namespace SKUWPFAppHVAC.Model.Calculations
         {
             double waterDensity = CalculateWaterProperties(tSupply, tReturn).Item1;
             double heatingCapacity = CalculateWaterProperties(tSupply, tReturn).Item2;
-            double flowKgH = Math.Round(power * 3600 / ((tSupply - tReturn) * heatingCapacity),1);
+            double flowKgH = Math.Round(power * 3600 / (Math.Abs((tSupply - tReturn)) * heatingCapacity),1);
             double flowM3H = Math.Round(flowKgH / waterDensity,3);
             double flowLS = Math.Round(flowKgH / 3600, 3);
             return Tuple.Create(flowM3H, flowKgH, flowLS);

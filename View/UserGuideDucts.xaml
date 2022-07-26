@@ -37,6 +37,9 @@ Enter the internal width of the section in mm of duct being used to measure flow
 Enter the internal height of the section in mm of duct being used to measure flow.
 <LineBreak/><Bold>Flow Velocity Calculation</Bold>
 This is the speed at which the substance is moving.
+Green background (less than 5 m/s) good velocity
+Orange red background (greater than 5 m/s and less than 7 m/s) - ok, within limits
+Red background (greater than 7 m/s) - high velocity, sometimes it can be a problem
  <LineBreak/><Bold>Heating power for airflow</Bold>
 You can also calculate power for heating of the known airflow from inlet temperature to outle temperature:
 Q = 0.278 x ρ x Cp x Q x (Toutlet - Tinlet),

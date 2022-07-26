@@ -1,10 +1,8 @@
 ﻿using SKUWPFAppHVAC.Model;
 using SKUWPFAppHVAC.Model.Calculations;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Windows;
 using System.Windows.Media;
 
 namespace SKUWPFAppHVAC.ViewModel

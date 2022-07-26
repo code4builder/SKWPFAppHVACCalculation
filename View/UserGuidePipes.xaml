@@ -29,6 +29,9 @@ Enter the volumetric amount of water that will flow pass in a unit of time from 
 Alternatively you can activate checkbox ‘Input power’ for calculation using heating/cooling power, supply and return temperatures of water.
 <LineBreak/><Bold>Flow Velocity Calculation</Bold>
 This is the speed at which the substance is moving.
+Green background (less than 1.0 m/s) good velocity
+Orange red background (greater than 1.0 m/s and less than 1.5 m/s) - ok, within limits
+Red background (greater than 1.5 m/s) - high velocity, sometimes it can be a problem
 <LineBreak/><Bold>Formulas for water flow conversion</Bold>
 Flow in kg/h:  Q[kg/h] = Q[m3/h]  * ρ
 Flow in l/s:  Q[l/s] = Q[kg/h] / 3600

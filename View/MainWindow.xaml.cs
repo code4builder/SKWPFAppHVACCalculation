@@ -26,8 +26,8 @@ namespace SKUWPFAppHVAC
 
         private void MIAbout_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("HVAC Small Calculator V1.0.0 \nSmall tool for basic calculations for ducts and pipes \n" +
-                            "This application was created by Sergey Kuleshov \nEmail: code4builder@gmail.com");
+            MessageBox.Show("HVAC Small Calculator V1.0.0 \n \nSmall tool for basic calculations for ducts and pipes \n \n" +
+                            "This application was created by Sergey Kuleshov \n \nEmail: code4builder@gmail.com");
         }
 
         private void AirButton_Click(object sender, RoutedEventArgs e)
@@ -52,7 +52,7 @@ namespace SKUWPFAppHVAC
 
         private void YouTubeGuide_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=YSp0Qqtyfh0");
+            System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=ZUrc1izY6QI");
         }
     }
 }
