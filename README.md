@@ -13,8 +13,8 @@ Based on .NET Framework 4.7.2.<br />
 For user interface was used WPF (Windows Presentation Foundation) with Material Design libraries for better style.
 
 ## Screenshots
-![Screenshot1](/../dev/Screenshots/SKRevitPluginPipeInsulation-screenshot_01.JPG)
-![Screenshot2](/../dev/Screenshots/SKRevitPluginPipeInsulation-screenshot_02.JPG)
+![Screenshot1](/../dev/Screenshots/HVACSmallCalculatorScreenshot1.JPG)
+![Screenshot2](/../dev/Screenshots/HVACSmallCalculatorScreenshot2.JPG)
 
 ## Video Tutorial
 Visit https://www.youtube.com/watch?v=YSp0Qqtyfh0
