@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:SKUWPFAppHVAC.View"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="1120"
+             d:DesignHeight="210" d:DesignWidth="1120"
              x:Name="WaterFlowPipeUC">
 
     <UserControl.Resources>
@@ -39,15 +39,15 @@
             </Grid.RowDefinitions>
             <materialDesign:Card Background="OrangeRed" 
                                  Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 
-                                 Width="180" 
+                                 Width="140" 
                                  Height="50"
                                  Padding="8">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="16" 
-                               Text="Water" 
+                               Text="Pipe calculation" 
                                VerticalAlignment="Center"
-                               Margin="0,0,15,0"/>
-                    <Image Source="/View/imageCircDuct.JPG"/>
+                               TextWrapping="Wrap"
+                               HorizontalAlignment="Center"/>
                 </StackPanel>
             </materialDesign:Card>
 

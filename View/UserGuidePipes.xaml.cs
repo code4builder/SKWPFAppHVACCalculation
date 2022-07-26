@@ -16,16 +16,13 @@ using System.Windows.Shapes;
 namespace SKUWPFAppHVAC.View
 {
     /// <summary>
-    /// Interaction logic for Water.xaml
+    /// Interaction logic for UserGuidePipes.xaml
     /// </summary>
-    public partial class WaterPage : Page
+    public partial class UserGuidePipes : Page
     {
-        public WaterFlowPipe waterFlowPipe;
-        public WaterPage()
+        public UserGuidePipes()
         {
             InitializeComponent();
-            waterFlowPipe = new WaterFlowPipe();
-            WaterPageFrame1.Content = waterFlowPipe;
         }
     }
 }

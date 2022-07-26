@@ -6,36 +6,46 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:SKUWPFAppHVAC"
         mc:Ignorable="d"
-        Title="HVAC Calculations Small App" Height="650" Width="1200" Icon="/HVAC_icon.png">
+        Title="HVAC Calculations Small App" Height="700" Width="1250" Icon="/Resources/HVAC_icon.png">
     <StackPanel>
         <Menu>
-            <MenuItem Header="File" 
-                      Width="80" 
-                      Height="15" 
+            <MenuItem Header="About" 
+                      Width="100" 
+                      Height="20" 
                       FontSize="12" 
                       BorderThickness="1" 
                       BorderBrush="Gray">
-                <MenuItem Header="About" 
-                          Width="80" 
-                          Height="15" 
+                <MenuItem Header="App info" 
+                          Width="150" 
+                          Height="20"
+                          Margin="0,0,0,7"
                           Click="MIAbout_Click"/>
+                <MenuItem Header="YouTube guide" 
+                          Width="150" 
+                          Height="20" 
+                          Click="YouTubeGuide_Click"/>
             </MenuItem>
             <MenuItem Header="Info" 
-                      Width="80" 
-                      Height="15" 
+                      Width="100" 
+                      Height="20" 
                       FontSize="12" 
                       BorderThickness="1" 
                       BorderBrush="Gray">
                 <MenuItem Header="User Guide for Duct Calculations" 
                           Width="Auto" 
-                          Height="15"
+                          Height="20"
+                          Margin="0,0,0,7"
                           Click="MenuItemUserGuideDucts_Click"/>
+                <MenuItem Header="User Guide for Pipe Calculations" 
+                          Width="Auto" 
+                          Height="20"
+                          Click="MenuItemUserGuidePipes_Click"/>
             </MenuItem>
         </Menu>
         <Grid x:Name="MainGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="600"/>
 
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" 
@@ -58,9 +68,12 @@
                         Background="OrangeRed"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
             </StackPanel>
-            <Frame x:Name="MainWindowFrame1" 
-                   Grid.Row="1" 
+            <ScrollViewer Grid.Row="1">
+                <Frame x:Name="MainWindowFrame1" 
+                   
                    NavigationUIVisibility="Hidden"/>
+
+            </ScrollViewer>
 
         </Grid>
     </StackPanel>

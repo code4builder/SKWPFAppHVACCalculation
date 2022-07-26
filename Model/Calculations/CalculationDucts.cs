@@ -39,5 +39,13 @@ namespace SKUWPFAppHVAC
         {
             return (int)Math.Round((rectDuctAirflowLS * 3.6), 2);
         }
+
+        public static double CalculateHeatingPowerForAirflow(double airflow, double inletTemperature, double outletTemperature)
+        {
+            double averageTemperature = (inletTemperature + outletTemperature) / 2;
+            double airDensity = 353 / (273 + averageTemperature);
+            double heatingPower = Math.Round((airflow * airDensity * 1.005 * (outletTemperature - inletTemperature) / 3.6 / 1000), 3);
+            return heatingPower;
+        }
     }
 }

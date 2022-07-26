@@ -6,7 +6,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:SKUWPFAppHVAC.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="1150"
+      d:DesignHeight="150" d:DesignWidth="1150"
       x:Name="AirRectangularDuctsUC">
     <UserControl.Resources>
         <Style TargetType="TextBox" x:Key="commonTBox" 
@@ -46,7 +46,7 @@
                                Text="Rectangular Duct" 
                                VerticalAlignment="Center"
                                Margin="0,0,10,0"/>
-                    <Image Source="/View/imageRectDuct.JPG"/>
+                    <Image Source="/Resources/imageRectDuct.JPG"/>
                 </StackPanel>
             </materialDesign:Card>
 

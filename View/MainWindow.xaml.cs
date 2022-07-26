@@ -11,6 +11,7 @@ namespace SKUWPFAppHVAC
         public AirPage AirPage;
         public WaterPage WaterPage;
         public UserGuideDucts UserGuideDuctsPage;
+        public UserGuidePipes UserGuidePipesPage;
 
         public MainWindow()
         {
@@ -18,13 +19,14 @@ namespace SKUWPFAppHVAC
             WaterPage = new WaterPage();
             AirPage = new AirPage();
             UserGuideDuctsPage = new UserGuideDucts();
+            UserGuidePipesPage = new UserGuidePipes();
             MainWindowFrame1.Content = AirPage;
             
         }
 
         private void MIAbout_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("HVAC Small Calculator \nSmall tool for basic calculations for ducts and pipes \n" +
+            MessageBox.Show("HVAC Small Calculator V1.0.0 \nSmall tool for basic calculations for ducts and pipes \n" +
                             "This application was created by Sergey Kuleshov \nEmail: code4builder@gmail.com");
         }
 
@@ -43,6 +45,14 @@ namespace SKUWPFAppHVAC
             MainWindowFrame1.Content = UserGuideDuctsPage;
         }
 
+        private void MenuItemUserGuidePipes_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindowFrame1.Content = UserGuidePipesPage;
+        }
 
+        private void YouTubeGuide_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=YSp0Qqtyfh0");
+        }
     }
 }

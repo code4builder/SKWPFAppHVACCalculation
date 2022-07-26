@@ -205,6 +205,53 @@ namespace SKUWPFAppHVAC.ViewModel
 
         #endregion
 
+        #region HEATING POWER FOR AIRFLOW
+        private double _selectedAirflowForHeating;
+        public double SelectedAirflowForHeating
+        {
+            get => _selectedAirflowForHeating;
+            set
+            {
+                _selectedAirflowForHeating = value;
+                NotifyPropertyChanged(nameof(SelectedAirflowForHeating));
+            }
+        }
+
+        private double _selectedInletAirTemperatureForHeating;
+        public double SelectedInletAirTemperatureForHeating
+        {
+            get => _selectedInletAirTemperatureForHeating;
+            set
+            {
+                _selectedInletAirTemperatureForHeating = value;
+                NotifyPropertyChanged(nameof(SelectedInletAirTemperatureForHeating));
+            }
+        }
+
+        private double _selectedOutletAirTemperatureForHeating;
+        public double SelectedOutletAirTemperatureForHeating
+        {
+            get => _selectedOutletAirTemperatureForHeating;
+            set
+            {
+                _selectedOutletAirTemperatureForHeating = value;
+                NotifyPropertyChanged(nameof(SelectedOutletAirTemperatureForHeating));
+            }
+        }
+
+        private double _heatingPowerForAirflow;
+        public double HeatingPowerForAirflow
+        {
+            get => _heatingPowerForAirflow;
+            set
+            {
+                _heatingPowerForAirflow = value;
+                NotifyPropertyChanged(nameof(HeatingPowerForAirflow));
+            }
+        }
+
+        #endregion
+
         #region PIPE WATER FLOW PROPERTIES
 
         private double _selectedPower;
@@ -506,6 +553,23 @@ namespace SKUWPFAppHVAC.ViewModel
                 ));
             }
         }
+
+        private RelayCommand _showResultHeatingPowerForAirflowVM;
+        public RelayCommand ShowResultHeatingPowerForAirflowVM
+        {
+            get
+            {
+                return _showResultHeatingPowerForAirflowVM ?? (_showResultHeatingPowerForAirflowVM = new RelayCommand(obj =>
+                {
+                    HeatingPowerForAirflow = CalculationDucts.CalculateHeatingPowerForAirflow(
+                        SelectedAirflowForHeating, 
+                        SelectedInletAirTemperatureForHeating,
+                        SelectedOutletAirTemperatureForHeating);
+                }
+                ));
+            }
+        }
+
 
         private RelayCommand showResultWaterFlowVM;
         public RelayCommand ShowResultWaterFlowVM
