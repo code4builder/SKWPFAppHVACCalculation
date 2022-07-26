@@ -8,7 +8,7 @@ Prerequisits
 The application is compatible with the latest versions of Windows 8.1 and Windows 10.
 
 Technologies
-The Plugin is developed in Visual Studio 2022
+The application is developed in Visual Studio 2022
 Based on .NET Framework 4.7.2
 For user interface was used WPF (Windows Presentation Foundation) with Material Design libraries for better style.
 
