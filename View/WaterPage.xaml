@@ -1,0 +1,22 @@
+﻿<Page x:Class="SKUWPFAppHVAC.View.WaterPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SKUWPFAppHVAC.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="1120"
+      Title="WaterPage_">
+
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Frame x:Name="WaterPageFrame1" 
+               Grid.Row="0"
+               NavigationUIVisibility="Hidden"
+               Margin="0, 180, 0, 0"/>
+
+    </Grid>
+</Page>

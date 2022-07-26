@@ -1,0 +1,80 @@
+﻿<Window x:Class="SKUWPFAppHVAC.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:SKUWPFAppHVAC"
+        mc:Ignorable="d"
+        Title="HVAC Calculations Small App" Height="700" Width="1250" Icon="/Resources/HVAC_icon.png">
+    <StackPanel>
+        <Menu>
+            <MenuItem Header="About" 
+                      Width="100" 
+                      Height="20" 
+                      FontSize="12" 
+                      BorderThickness="1" 
+                      BorderBrush="Gray">
+                <MenuItem Header="App info" 
+                          Width="150" 
+                          Height="20"
+                          Margin="0,0,0,7"
+                          Click="MIAbout_Click"/>
+                <MenuItem Header="YouTube guide" 
+                          Width="150" 
+                          Height="20" 
+                          Click="YouTubeGuide_Click"/>
+            </MenuItem>
+            <MenuItem Header="Info" 
+                      Width="100" 
+                      Height="20" 
+                      FontSize="12" 
+                      BorderThickness="1" 
+                      BorderBrush="Gray">
+                <MenuItem Header="User Guide for Duct Calculations" 
+                          Width="Auto" 
+                          Height="20"
+                          Margin="0,0,0,7"
+                          Click="MenuItemUserGuideDucts_Click"/>
+                <MenuItem Header="User Guide for Pipe Calculations" 
+                          Width="Auto" 
+                          Height="20"
+                          Click="MenuItemUserGuidePipes_Click"/>
+            </MenuItem>
+        </Menu>
+        <Grid x:Name="MainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="600"/>
+
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" 
+                        Orientation="Horizontal" 
+                        HorizontalAlignment="Center">
+                <Button x:Name="AirButton" 
+                        Content="AIR"  
+                        Width="100" 
+                        Click="AirButton_Click" 
+                        Margin="0 0 10 0"
+                        ToolTip="Resource name: MaterialDesignRaisedButton" 
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+                <Button x:Name="WaterButton" 
+                        Content="WATER"  
+                        Width="100" 
+                        Click="WaterButton_Click"
+                        ToolTip="Resource name: MaterialDesignRaisedButton" 
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Background="OrangeRed"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+            </StackPanel>
+            <ScrollViewer Grid.Row="1">
+                <Frame x:Name="MainWindowFrame1" 
+                   
+                   NavigationUIVisibility="Hidden"/>
+
+            </ScrollViewer>
+
+        </Grid>
+    </StackPanel>
+</Window>

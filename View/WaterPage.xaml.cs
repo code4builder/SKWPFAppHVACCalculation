@@ -13,16 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SKUWPFAppHVAC
+namespace SKUWPFAppHVAC.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Water.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WaterPage : Page
     {
-        public MainWindow()
+        public WaterFlowPipe waterFlowPipe;
+        public WaterPage()
         {
             InitializeComponent();
+            waterFlowPipe = new WaterFlowPipe();
+            WaterPageFrame1.Content = waterFlowPipe;
         }
     }
 }
