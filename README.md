@@ -8,7 +8,7 @@ Also this application colors with red excessive velocity of flow<br />
 The application is compatible with the latest versions of Windows 8.1 and Windows 10.
 
 ## Technologies
-The Plugin is developed in Visual Studio 2022.<br />
+The application is developed in Visual Studio 2022.<br />
 Based on .NET Framework 4.7.2.<br />
 For user interface was used WPF (Windows Presentation Foundation) with Material Design libraries for better style.
 
